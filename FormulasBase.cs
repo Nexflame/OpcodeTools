@@ -10,6 +10,14 @@ namespace OpcodeTools
         protected abstract bool SpecialCheck(uint opcode);
         protected abstract bool AuthCheck(uint opcode);
         protected virtual uint BaseOffset { get { return 1376; } }
+        protected bool HasSpecialGroups;
+        protected string SpecialGroupName;
+
+        public FormulasBase()
+        {
+            this.HasSpecialGroups = false;
+            this.SpecialGroupName = "None";
+        }
 
         public bool IsAuthOpcode(uint opcode)
         {
@@ -24,6 +32,16 @@ namespace OpcodeTools
         public bool IsSpecialOpcode(uint opcode)
         {
             return !IsAuthOpcode(opcode) && SpecialCheck(opcode);
+        }
+
+        public bool HasBuildSpecialGroups()
+        {
+            return HasSpecialGroups;
+        }
+
+        public string GetSpecialGroupName()
+        {
+            return SpecialGroupName;
         }
 
         public uint CalcOffsetFromOpcode(uint opcode)

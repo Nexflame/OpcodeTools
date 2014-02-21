@@ -42,12 +42,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.authBox = new System.Windows.Forms.TextBox();
             this.Versions = new System.Windows.Forms.ComboBox();
+            this.SpecialGroupNameBox = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // opcodeDecBox
             // 
             this.opcodeDecBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.opcodeDecBox.Location = new System.Drawing.Point(28, 128);
+            this.opcodeDecBox.Location = new System.Drawing.Point(25, 124);
             this.opcodeDecBox.Name = "opcodeDecBox";
             this.opcodeDecBox.Size = new System.Drawing.Size(51, 20);
             this.opcodeDecBox.TabIndex = 1;
@@ -56,7 +57,7 @@
             // offsetBox
             // 
             this.offsetBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.offsetBox.Location = new System.Drawing.Point(139, 89);
+            this.offsetBox.Location = new System.Drawing.Point(136, 85);
             this.offsetBox.Name = "offsetBox";
             this.offsetBox.Size = new System.Drawing.Size(46, 20);
             this.offsetBox.TabIndex = 3;
@@ -65,7 +66,7 @@
             // opcodeHexBox
             // 
             this.opcodeHexBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.opcodeHexBox.Location = new System.Drawing.Point(29, 92);
+            this.opcodeHexBox.Location = new System.Drawing.Point(26, 88);
             this.opcodeHexBox.Name = "opcodeHexBox";
             this.opcodeHexBox.Size = new System.Drawing.Size(50, 20);
             this.opcodeHexBox.TabIndex = 0;
@@ -74,7 +75,7 @@
             // cryptedBox
             // 
             this.cryptedBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cryptedBox.Location = new System.Drawing.Point(139, 53);
+            this.cryptedBox.Location = new System.Drawing.Point(136, 49);
             this.cryptedBox.Name = "cryptedBox";
             this.cryptedBox.Size = new System.Drawing.Size(46, 20);
             this.cryptedBox.TabIndex = 2;
@@ -83,7 +84,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(136, 37);
+            this.label1.Location = new System.Drawing.Point(133, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 4;
@@ -93,7 +94,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(136, 73);
+            this.label2.Location = new System.Drawing.Point(133, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 5;
@@ -103,7 +104,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 112);
+            this.label3.Location = new System.Drawing.Point(22, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 6;
@@ -113,7 +114,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 76);
+            this.label4.Location = new System.Drawing.Point(23, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 7;
@@ -123,7 +124,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(136, 110);
+            this.label5.Location = new System.Drawing.Point(133, 106);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 9;
@@ -132,7 +133,7 @@
             // specialBox
             // 
             this.specialBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.specialBox.Location = new System.Drawing.Point(139, 126);
+            this.specialBox.Location = new System.Drawing.Point(136, 122);
             this.specialBox.Name = "specialBox";
             this.specialBox.Size = new System.Drawing.Size(46, 20);
             this.specialBox.TabIndex = 4;
@@ -142,7 +143,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(97, 105);
+            this.label9.Location = new System.Drawing.Point(94, 101);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(25, 13);
             this.label9.TabIndex = 15;
@@ -152,7 +153,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(136, 149);
+            this.label11.Location = new System.Drawing.Point(133, 145);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 13);
             this.label11.TabIndex = 19;
@@ -161,7 +162,7 @@
             // authBox
             // 
             this.authBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.authBox.Location = new System.Drawing.Point(139, 165);
+            this.authBox.Location = new System.Drawing.Point(136, 161);
             this.authBox.Name = "authBox";
             this.authBox.Size = new System.Drawing.Size(46, 20);
             this.authBox.TabIndex = 5;
@@ -178,11 +179,21 @@
             this.Versions.TabIndex = 6;
             this.Versions.SelectedIndexChanged += new System.EventHandler(this.Versions_SelectedIndexChanged);
             // 
+            // SpecialGroupNameBox
+            // 
+            this.SpecialGroupNameBox.AutoSize = true;
+            this.SpecialGroupNameBox.Location = new System.Drawing.Point(23, 189);
+            this.SpecialGroupNameBox.Name = "SpecialGroupNameBox";
+            this.SpecialGroupNameBox.Size = new System.Drawing.Size(33, 13);
+            this.SpecialGroupNameBox.TabIndex = 20;
+            this.SpecialGroupNameBox.Text = "None";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 199);
+            this.ClientSize = new System.Drawing.Size(233, 211);
+            this.Controls.Add(this.SpecialGroupNameBox);
             this.Controls.Add(this.Versions);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.authBox);
@@ -222,6 +233,7 @@
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.TextBox authBox;
         private System.Windows.Forms.ComboBox Versions;
+        private System.Windows.Forms.Label SpecialGroupNameBox;
 	}
 }
 

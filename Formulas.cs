@@ -34,8 +34,7 @@ namespace OpcodeTools
 
         public override uint CalcSpecialFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return (a4 & 2 | ((a4 & 0x10 | ((a4 & 0x40 | ((a4 & 0x100 | ((a4 & 0xC00 | (a4 >> 2) & 0x1000) >> 1)) >> 1)) >> 1)) >> 2)) >> 1;
+            return (opcode & 2 | ((opcode & 0x10 | ((opcode & 0x40 | ((opcode & 0x100 | ((opcode & 0xC00 | (opcode >> 2) & 0x1000) >> 1)) >> 1)) >> 1)) >> 2)) >> 1;
         }
 
         public override uint CalcAuthFromOpcode(uint opcode)
@@ -117,14 +116,12 @@ namespace OpcodeTools
 
         public override uint CalcSpecialFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return ((a4 & 0x8000) >> 8) | a4 & 3 | ((a4 & 0x3800) >> 7) | ((a4 & 0x180) >> 5);
+            return (((opcode & 0x8000) >> 8) | opcode & 3 | ((opcode & 0x3800) >> 7) | ((opcode & 0x180) >> 5));
         }
 
         public override uint CalcAuthFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return ((a4 & 4) >> 2) | ((a4 & 0x300) >> 7);
+            return ((opcode & 4) >> 2) | ((opcode & 0x300) >> 7);
         }
     }
 
@@ -158,14 +155,12 @@ namespace OpcodeTools
 
         public override uint CalcSpecialFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return (a4 & 8 | ((a4 & 0x20 | (((a4 & 0x80) | ((a4 & 0x200 | (a4 >> 2) & 0x3C00) >> 1)) >> 1)) >> 1)) >> 3;
+            return (opcode & 8 | ((opcode & 0x20 | (((opcode & 0x80) | ((opcode & 0x200 | (opcode >> 2) & 0x3C00) >> 1)) >> 1)) >> 1)) >> 3;
         }
 
         public override uint CalcAuthFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return a4 & 1 | ((a4 & 8 | (a4 >> 9) & 0x10) >> 2);
+            return opcode & 1 | ((opcode & 8 | (opcode >> 9) & 0x10) >> 2);
         }
     }
 
@@ -201,14 +196,12 @@ namespace OpcodeTools
 
         public override uint CalcSpecialFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return ((a4 & 0xF000) >> 8) | ((a4 & 0x200) >> 6) | ((a4 & 0x80) >> 5) | ((a4 & 8) >> 3) | ((a4 & 0x20) >> 4);
+            return ((opcode & 0xF000) >> 8) | ((opcode & 0x200) >> 6) | ((opcode & 0x80) >> 5) | ((opcode & 8) >> 3) | ((opcode & 0x20) >> 4);
         }
 
         public override uint CalcAuthFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return (a4 & 1 | ((a4 & 0x2000) >> 11) | ((a4 & 8) >> 2));
+            return (opcode & 1 | ((opcode & 0x2000) >> 11) | ((opcode & 8) >> 2));
         }
     }
 
@@ -244,14 +237,12 @@ namespace OpcodeTools
 
         public override uint CalcSpecialFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return ((a4 & 0x6000) >> 7) | ((a4 & 0x800) >> 6) | ((a4 & 0x10) >> 4) | ((a4 & 0x3C0) >> 5);
+            return ((opcode & 0x6000) >> 7) | ((opcode & 0x800) >> 6) | ((opcode & 0x10) >> 4) | ((opcode & 0x3C0) >> 5);
         }
 
         public override uint CalcAuthFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return ((a4 & 0x8000) >> 13) | ((a4 & 2) >> 1) | ((a4 & 0x80) >> 6);
+            return ((opcode & 0x8000) >> 13) | ((opcode & 2) >> 1) | ((opcode & 0x80) >> 6);
         }
     }
 
@@ -285,14 +276,12 @@ namespace OpcodeTools
 
         public override uint CalcSpecialFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return (a4 & 0x10 | ((a4 & 0x3C0 | ((a4 & 0x800 | (a4 >> 1) & 0x3000) >> 1)) >> 1)) >> 4;
+            return (opcode & 0x10 | ((opcode & 0x3C0 | ((opcode & 0x800 | (opcode >> 1) & 0x3000) >> 1)) >> 1)) >> 4;
         }
 
         public override uint CalcAuthFromOpcode(uint opcode)
         {
-            uint a4 = opcode;
-            return (a4 & 2 | (((a4 & 0x80) | (a4 >> 7) & 0x100) >> 5)) >> 1;
+            return (opcode & 2 | (((opcode & 0x80) | (opcode >> 7) & 0x100) >> 5)) >> 1;
         }
     }
 
@@ -487,6 +476,247 @@ namespace OpcodeTools
         public override uint CalcAuthFromOpcode(uint opcode)
         {
             return (opcode & 2 | ((opcode & 0xC00 | (opcode >> 2) & 0x1000) >> 8)) >> 1;
+        }
+    }
+
+    public class Windows547 : FormulasBase
+    {
+        private uint _SpecialGroupNumber = 0;
+
+        public Windows547()
+        {
+            this.HasSpecialGroups = true;
+        }
+
+        public override string ToString()
+        {
+            return "5.4.7.17930 Windows";
+        }
+
+        protected override bool AuthCheck(uint opcode)
+        {
+            return (opcode & 0xAF6) == 176;
+        }
+
+        protected override bool SpecialCheck(uint opcode)
+        {
+            bool result = false;
+
+            var v4 = opcode & 0x1C94;
+            var v7 = opcode & 0x1496;
+            var v8 = opcode & 0x1BE4;
+            var v9 = opcode & 0x12A4;
+
+            if ( v4 == 1024 || v4 == 3072 || v7 == 5120 || v7 == 5138 || (opcode & 0xEF4) == 224 || (opcode & 0xEB4) == 1184 || v8 == 2176 || v9 == 4768 || (opcode & 0x1B44) == 2308 )
+            {
+                result = true;
+                _SpecialGroupNumber = 1;
+                this.SpecialGroupName = "NetClient::JAMGroupGeneric";
+            }
+            else
+            {
+                if ((opcode & 0x159E) == 4112 || (opcode & 0x1C96) == 6162 || v8 == 2208)
+                {
+                    result = true;
+                    _SpecialGroupNumber = 2;
+                    this.SpecialGroupName = "NetClient::JAMGroup1";
+                }
+                else
+                {
+                    if ((opcode & 0x16BE) == 5136 || (opcode & 0x1CD6) == 4114 || (opcode & 0x1EF4) == 160 || (opcode & 0x1BC4) == 2432 || (opcode & 0x1AC4) == 6272 || v9 == 4736 || (opcode & 0x854) == 84)
+                    {
+                        result = true;
+                        _SpecialGroupNumber = 3;
+                        this.SpecialGroupName = "NetClient::JAMGroup2";
+                    }
+                    else
+                    {
+                        var v10 = opcode & 0x1294;
+                        if (v10 == 528 || (opcode & 0x9C4) == 2372)
+                        {
+                            result = true;
+                            _SpecialGroupNumber = 4;
+                            this.SpecialGroupName = "NetClient::JAMGroup3";
+                        }
+                        else
+                        {
+                            if (v10 == 16 || (opcode & 0x1944) == 6404)
+                            {
+                                result = true;
+                                _SpecialGroupNumber = 5;
+                                this.SpecialGroupName = "NetClient::JAMGroup4";
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        protected override bool NormalCheck(uint opcode)
+        {
+            return (opcode & 0x814) == 4;
+        }
+
+        public override uint CalcAuthFromOpcode(uint opcode)
+        {
+            return opcode & 1 | ((opcode & 8 | ((opcode & 0x100 | ((opcode & 0x400 | (opcode >> 1) & 0x7800) >> 1)) >> 4)) >> 2);
+        }
+
+        public override uint CalcCryptedFromOpcode(uint opcode)
+        {
+            return opcode & 3 | ((opcode & 8 | ((opcode & 0x7E0 | (opcode >> 1) & 0x7800) >> 1)) >> 1);
+        }
+
+        public override uint CalcSpecialFromOpcode(uint opcode)
+        {
+            uint result = 0;
+
+            if (_SpecialGroupNumber == 1)
+            {
+                uint v6;
+                if ((opcode & 0x1C94) == 1024)
+                {
+                    v6 = opcode & 3 | ((opcode & 8 | ((opcode & 0x60 | ((opcode & 0x300 | (opcode >> 3) & 0x1C00) >> 1)) >> 1)) >> 1);
+                }
+                else
+                {
+                    if ((opcode & 0x1C94) == 3072)
+                    {
+                        v6 = (opcode & 3 | ((opcode & 8 | ((opcode & 0x60 | ((opcode & 0x300 | (opcode >> 3) & 0x1C00) >> 1)) >> 1)) >> 1)) + 128;
+                    }
+                    else
+                    {
+                        if ((opcode & 0x1496) == 5120)
+                        {
+                            v6 = (opcode & 1 | ((opcode & 8 | ((opcode & 0x60 | ((opcode & 0x300 | ((opcode & 0x800 | (opcode >> 1) & 0x7000) >> 1)) >> 1)) >> 1)) >> 2)) + 256;
+                        }
+                        else
+                        {
+                            if ((opcode & 0x1496) == 5138)
+                            {
+                                v6 = (opcode & 1 | ((opcode & 8 | ((opcode & 0x60 | ((opcode & 0x300 | ((opcode & 0x800 | (opcode >> 1) & 0x7000) >> 1)) >> 1)) >> 1)) >> 2)) + 384;
+                            }
+                            else
+                            {
+                                if ((opcode & 0xEF4) == 224)
+                                {
+                                    v6 = (opcode & 3 | ((opcode & 8 | ((opcode & 0x100 | (opcode >> 3) & 0x1E00) >> 4)) >> 1)) + 512;
+                                }
+                                else
+                                {
+                                    if ((opcode & 0xEB4) == 1184)
+                                    {
+                                        v6 = (opcode & 3 | ((opcode & 8 | ((opcode & 0x40 | ((opcode & 0x100 | (opcode >> 3) & 0x1E00) >> 1)) >> 2)) >> 1)) + 544;
+                                    }
+                                    else
+                                    {
+                                        if ((opcode & 0x1BE4) == 2176)
+                                        {
+                                            v6 = (opcode & 3 | ((opcode & 0x18 | ((opcode & 0x400 | (opcode >> 2) & 0x3800) >> 5)) >> 1)) + 608;
+                                        }
+                                        else
+                                        {
+                                            if ((opcode & 0x12A4) == 4768 )
+                                                v6 = (opcode & 3 | ((opcode & 0x18 | ((opcode & 0x40 | ((opcode & 0x100 | ((opcode & 0xC00 | (opcode >> 1) & 0x7000) >> 1)) >> 1)) >> 1)) >> 1)) + 640;
+                                            else
+                                                v6 = (opcode & 3 | ((opcode & 0x38 | ((opcode & 0x80) | ((opcode & 0x400 | (opcode >> 2) & 0x3800) >> 2)) >> 1)) >> 1) + 896;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                result = v6;
+            }
+            else if (_SpecialGroupNumber == 2)
+            {
+                uint v6;
+                if ((opcode & 0x159E) == 4112 )
+                {
+                    v6 = opcode & 1 | ((opcode & 0x60 | ((opcode & 0x200 | ((opcode & 0x800 | (opcode >> 1) & 0x7000) >> 1)) >> 2)) >> 4);
+                }
+                else
+                {
+                    if ( (opcode & 0x1C96) == 6162 )
+                        v6 = (opcode & 1 | ((opcode & 8 | ((opcode & 0x60 | ((opcode & 0x300 | (opcode >> 3) & 0x1C00) >> 1)) >> 1)) >> 2)) + 32;
+                    else
+                        v6 = (opcode & 3 | ((opcode & 0x18 | ((opcode & 0x400 | (opcode >> 2) & 0x3800) >> 5)) >> 1)) + 96;
+                }
+                result = v6;
+            }
+            else if (_SpecialGroupNumber == 3)
+            {
+                uint v5;
+                if ((opcode & 0x16BE) == 5136)
+                {
+                    v5 = opcode & 1 | ((opcode & 0x40 | ((opcode & 0x100 | ((opcode & 0x800 | (opcode >> 1) & 0x7000) >> 2)) >> 1)) >> 5);
+                }
+                else
+                {
+                    if ((opcode & 0x1CD6) == 4114)
+                    {
+                        v5 = (opcode & 1 | ((opcode & 8 | ((opcode & 0x20 | ((opcode & 0x300 | (opcode >> 3) & 0x1C00) >> 2)) >> 1)) >> 2)) + 16;
+                    }
+                    else
+                    {
+                        if ((opcode & 0x1EF4) == 160)
+                        {
+                            v5 = (opcode & 3 | ((opcode & 8 | ((opcode & 0x100 | (opcode >> 4) & 0xE00) >> 4)) >> 1)) + 48;
+                        }
+                        else
+                        {
+                            if ((opcode & 0x1BC4) == 2432)
+                            {
+                                v5 = (opcode & 3 | ((opcode & 0x38 | ((opcode & 0x400 | (opcode >> 2) & 0x3800) >> 4)) >> 1)) + 64;
+                            }
+                            else
+                            {
+                                if ((opcode & 0x1AC4) == 6272 )
+                                {
+                                    v5 = (opcode & 3 | ((opcode & 0x38 | ((opcode & 0x100 | ((opcode & 0x400 | (opcode >> 2) & 0x3800) >> 1)) >> 2)) >> 1)) + 128;
+                                }
+                                else
+                                {
+                                    if ((opcode & 0x12A4) == 4736 )
+                                    {
+                                        v5 = (opcode & 3 | ((opcode & 0x18 | ((opcode & 0x40 | ((opcode & 0x100 | ((opcode & 0xC00 | (opcode >> 1) & 0x7000) >> 1)) >> 1)) >> 1)) >> 1)) + 256;
+                                    }
+                                    else
+                                    {
+                                        v5 = (opcode & 3 | ((opcode & 8 | ((opcode & 0x20 | ((opcode & 0x780 | (opcode >> 1) & 0x7800) >> 1)) >> 1)) >> 1)) + 512;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                result = v5;
+            }
+            else if (_SpecialGroupNumber == 4)
+            {
+                uint v6;
+
+                if ((opcode & 0x1294) == 528)
+                    v6 = opcode & 3 | ((opcode & 8 | ((opcode & 0x60 | ((opcode & 0x100 | ((opcode & 0xC00 | (opcode >> 1) & 0x7000) >> 1)) >> 1)) >> 1)) >> 1);
+                else
+                    v6 = (opcode & 3 | ((opcode & 0x38 | ((opcode & 0x600 | (opcode >> 1) & 0x7800) >> 3)) >> 1)) + 256;
+
+                result = v6;
+            }
+            else if (_SpecialGroupNumber == 5)
+            {
+                uint v5;
+
+                if ((opcode & 0x1294) == 16 )
+                    v5 = opcode & 3 | ((opcode & 8 | ((opcode & 0x60 | ((opcode & 0x100 | ((opcode & 0xC00 | (opcode >> 1) & 0x7000) >> 1)) >> 1)) >> 1)) >> 1);
+                else
+                    v5 = (opcode & 3 | ((opcode & 0x38 | ((opcode & 0x80) | ((opcode & 0x600 | (opcode >> 2) & 0x3800) >> 1)) >> 1)) >> 1) + 256;
+                result = v5;
+            }
+            return result;
         }
     }
 }

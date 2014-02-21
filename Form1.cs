@@ -47,6 +47,7 @@ namespace OpcodeTools
         {
             IgnoreTextChanged = true;
             cryptedBox.Text = specialBox.Text = offsetBox.Text = authBox.Text = "";
+            SpecialGroupNameBox.Text = "None";
             IgnoreTextChanged = false;
         }
 
@@ -65,6 +66,10 @@ namespace OpcodeTools
             {
                 uint specialHandlerNum = f.CalcSpecialFromOpcode(opcode);
                 specialBox.Text = String.Format("{0:x}", specialHandlerNum);
+                if (f.HasBuildSpecialGroups())
+                {
+                    SpecialGroupNameBox.Text = f.GetSpecialGroupName();
+                }
             }
             else if (f.IsNormalOpcode(opcode))
             {
