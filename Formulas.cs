@@ -483,6 +483,8 @@ namespace OpcodeTools
     {
         private uint _SpecialGroupNumber = 0;
 
+        protected override uint BaseOffset { get { return 1360; } }
+
         public Windows547()
         {
             this.HasSpecialGroups = true;
