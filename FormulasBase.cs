@@ -76,6 +76,11 @@ namespace OpcodeTools
             return 0;
         }
 
+        public uint CalcOpcodeFromCrypted(uint crypted)
+        {
+            return CalcOpcodeFromOffset((crypted * 4) + BaseOffset);
+        }
+
         public uint CalcOpcodeFromAuth(uint auth)
         {
             for (uint i = 1; i < 0xFFFF; ++i)

@@ -94,6 +94,24 @@ namespace OpcodeTools
             }
         }
 
+        private void cryptedBox_TextChanged(object sender, EventArgs e)
+        {
+            if (IgnoreTextChanged)
+                return;
+
+            try
+            {
+                uint crypted = Convert.ToUInt32(cryptedBox.Text);
+                uint opcode = f.CalcOpcodeFromCrypted(crypted);
+                uint offset = f.CalcOffsetFromOpcode(opcode);
+                SetOpcode(opcode);
+                offsetBox.Text = offset.ToString();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         private void offsetBox_TextChanged(object sender, EventArgs e)
         {
             if (IgnoreTextChanged)
@@ -101,7 +119,6 @@ namespace OpcodeTools
             try
             {
                 SetOpcode(f.CalcOpcodeFromOffset(Convert.ToUInt32(offsetBox.Text)));
-
             }
             catch (Exception)
             {

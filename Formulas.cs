@@ -521,7 +521,7 @@ namespace OpcodeTools
                 {
                     result = true;
                     _SpecialGroupNumber = 2;
-                    this.SpecialGroupName = "NetClient::JAMGroup1";
+                    this.SpecialGroupName = "NetClient::JAMGroupGuild";
                 }
                 else
                 {
@@ -529,7 +529,7 @@ namespace OpcodeTools
                     {
                         result = true;
                         _SpecialGroupNumber = 3;
-                        this.SpecialGroupName = "NetClient::JAMGroup2";
+                        this.SpecialGroupName = "NetClient::JAMGroupMovement";
                     }
                     else
                     {
@@ -538,7 +538,7 @@ namespace OpcodeTools
                         {
                             result = true;
                             _SpecialGroupNumber = 4;
-                            this.SpecialGroupName = "NetClient::JAMGroup3";
+                            this.SpecialGroupName = "NetClient::JAMGroupQuests";
                         }
                         else
                         {
@@ -546,7 +546,7 @@ namespace OpcodeTools
                             {
                                 result = true;
                                 _SpecialGroupNumber = 5;
-                                this.SpecialGroupName = "NetClient::JAMGroup4";
+                                this.SpecialGroupName = "NetClient::JAMGroupSpells";
                             }
                         }
                     }

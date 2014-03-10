@@ -79,6 +79,7 @@
             this.cryptedBox.Name = "cryptedBox";
             this.cryptedBox.Size = new System.Drawing.Size(46, 20);
             this.cryptedBox.TabIndex = 2;
+            this.cryptedBox.TextChanged += new System.EventHandler(this.cryptedBox_TextChanged);
             // 
             // label1
             // 
